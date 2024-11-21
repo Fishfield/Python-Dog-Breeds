@@ -1,0 +1,56 @@
+
+Questions regarding Uploaded Image Classification:
+
+1. Did the three model architectures classify the breed of dog in Dog_01.jpg to be the same breed? If not, report the differences in the classifications.
+
+Answer: 
+
+Yes: all 3 architectures correctly identified the breed english cocker spaniel for the first image
+
+
+2. Did each of the three model architectures classify the breed of dog in Dog_01.jpg to be the same breed of dog as that model architecture classified Dog_02.jpg? If not, report the differences in the classifications.
+
+Answer: 
+
+NO: all 3 architectures correctly identified the breed english cocker spaniel, but only for the non rotate image Dog_01
+
+AlexNet:
+                    Dog_01.jpg: 
+Real:                        dog   Classifier: cocker spaniel, english cocker spaniel, cocker  
+PetLabelDog: 1  ClassLabelDog: 1
+
+                    Dog_02.jpg: 
+Real:                        dog   Classifier:                  irish terrier  
+PetLabelDog: 1  ClassLabelDog: 1
+
+
+ResNet:
+
+                    Dog_01.jpg: 
+Real:                        dog   Classifier: cocker spaniel, english cocker spaniel, cocker  
+PetLabelDog: 1  ClassLabelDog: 1
+
+                    Dog_02.jpg: 
+Real:                        dog   Classifier:               blenheim spaniel  
+PetLabelDog: 1  ClassLabelDog: 1
+
+
+VGG:
+                    Dog_01.jpg: 
+Real:                        dog   Classifier: cocker spaniel, english cocker spaniel, cocker  
+PetLabelDog: 1  ClassLabelDog: 1
+
+                    Dog_02.jpg: 
+Real:                        dog   Classifier:         welsh springer spaniel  
+PetLabelDog: 1  ClassLabelDog: 1
+
+
+3. Did the three model architectures correctly classify Animal_Name_01.jpg and Object_Name_01.jpg to not be dogs? If not, report the misclassifications.
+
+Answer: Yes it did not classify them as dogs
+
+
+4. Based upon your answers for questions 1. - 3. above, select the model architecture that you feel did the best at classifying the four uploaded images. Describe why you selected that model architecture as the best on uploaded image classification.
+
+Answer
+I guess the sample size is too small. All of them had the same result and the time was equal as well. If there is more data it would be easier to say

@@ -42,4 +42,14 @@ def get_pet_labels(image_dir):
     """
     # Replace None with the results_dic dictionary that you created with this
     # function
-    return None
+
+    filename_list = listdir(image_dir)
+
+    pet_labels = dict()
+
+    for filename in filename_list:
+        # We assume that the format is xxx_234234.jpg
+        adjusted_filename = filename.lower().replace("_"," ").strip()
+        pet_labels[filename] = [adjusted_filename[0:adjusted_filename.rindex(" ")]]
+        
+    return pet_labels

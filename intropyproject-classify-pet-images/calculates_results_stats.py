@@ -70,4 +70,42 @@ def calculates_results_stats(results_dic):
     """        
     # Replace None with the results_stats_dic dictionary that you created with 
     # this function 
-    return None
+
+    results_stats_dic = dict()
+
+    results_stats_dic["n_images"] = len(results_dic)
+    results_stats_dic["n_dogs_img"] = 0
+    results_stats_dic["n_correct_dogs"] = 0
+    results_stats_dic["n_correct_breed"] = 0
+    results_stats_dic["n_correct_notdogs"] = 0
+    results_stats_dic["n_match"] = 0
+
+    for tuple in results_dic.items():
+        item = tuple[1]
+        if item[3] == 1:
+            results_stats_dic["n_dogs_img"] += 1
+            if item[4] == 1:
+                results_stats_dic["n_correct_dogs"] += 1
+
+        if item[2] == 1:
+            results_stats_dic["n_match"] += 1
+            if item[3] == 1:
+                results_stats_dic["n_correct_breed"] += 1
+                
+        if item[3] == 0 and item[4] == 0:
+            results_stats_dic["n_correct_notdogs"] += 1
+
+    number_of_images = results_stats_dic["n_images"]
+    results_stats_dic["n_notdogs_img"] = number_of_images - results_stats_dic["n_dogs_img"]
+
+    results_stats_dic["pct_match"] = (results_stats_dic["n_match"] / number_of_images) * 100.0
+    results_stats_dic["pct_correct_breed"] = (results_stats_dic["n_correct_breed"] / results_stats_dic["n_dogs_img"]) * 100.0
+    results_stats_dic["pct_correct_dogs"] = (results_stats_dic["n_correct_dogs"] / results_stats_dic["n_dogs_img"]) * 100.0
+
+    # Use conditional logic to avoid division by 0 error
+    if (results_stats_dic["n_notdogs_img"] > 0):
+        results_stats_dic["pct_correct_notdogs"] = (results_stats_dic["n_correct_notdogs"] / results_stats_dic["n_notdogs_img"]) * 100.0
+    else:
+        results_stats_dic["pct_correct_notdogs"] = 0.0
+
+    return results_stats_dic

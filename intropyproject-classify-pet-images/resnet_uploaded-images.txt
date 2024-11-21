@@ -1,0 +1,84 @@
+Command Line Arguments:
+     dir = uploaded_images/ 
+    arch = resnet 
+ dogfile = dognames.txt
+
+Pet Image Label Dictionary has 4 key-value pairs.
+Below are 4 of them:
+ 1 key:               Any_Image_01.jpg  label:                  any image
+ 2 key:                     Dog_01.jpg  label:                        dog
+ 3 key:                     Dog_02.jpg  label:                        dog
+ 4 key:              Brown_Bear_01.jpg  label:                 brown bear
+
+     MATCH:
+
+             Brown_Bear_01.jpg: 
+Real:                 brown bear   Classifier: brown bear, bruin, ursus arctos
+
+ NOT A MATCH:
+
+              Any_Image_01.jpg: 
+Real:                  any image   Classifier:    crossword puzzle, crossword
+
+                    Dog_01.jpg: 
+Real:                        dog   Classifier: cocker spaniel, english cocker spaniel, cocker
+
+                    Dog_02.jpg: 
+Real:                        dog   Classifier:               blenheim spaniel
+
+# Total Images 4 # Matches: 1 # NOT Matches: 3
+not correctly classified in else 1: any image crossword puzzle, crossword
+not correctly classified in else 1: brown bear brown bear, bruin, ursus arctos
+{'Any_Image_01.jpg': ['any image', 'crossword puzzle, crossword', 0, 0, 0], 'Dog_01.jpg': ['dog', 'cocker spaniel, english cocker spaniel, cocker', 0, 1, 1], 'Dog_02.jpg': ['dog', 'blenheim spaniel', 0, 1, 1], 'Brown_Bear_01.jpg': ['brown bear', 'brown bear, bruin, ursus arctos', 1, 0, 0]}
+
+     MATCH:
+
+             Brown_Bear_01.jpg: 
+Real:                 brown bear   Classifier: brown bear, bruin, ursus arctos  
+PetLabelDog: 0  ClassLabelDog: 0
+
+ NOT A MATCH:
+
+              Any_Image_01.jpg: 
+Real:                  any image   Classifier:    crossword puzzle, crossword  
+PetLabelDog: 0  ClassLabelDog: 0
+
+                    Dog_01.jpg: 
+Real:                        dog   Classifier: cocker spaniel, english cocker spaniel, cocker  
+PetLabelDog: 1  ClassLabelDog: 1
+
+                    Dog_02.jpg: 
+Real:                        dog   Classifier:               blenheim spaniel  
+PetLabelDog: 1  ClassLabelDog: 1
+
+# Total Images 4 # Matches: 1 # NOT Matches: 3
+{'Any_Image_01.jpg': ['any image', 'crossword puzzle, crossword', 0, 0, 0], 'Dog_01.jpg': ['dog', 'cocker spaniel, english cocker spaniel, cocker', 0, 1, 1], 'Dog_02.jpg': ['dog', 'blenheim spaniel', 0, 1, 1], 'Brown_Bear_01.jpg': ['brown bear', 'brown bear, bruin, ursus arctos', 1, 0, 0]}
+
+ ** Statistics from calculates_results_stats() function:
+N Images:  4  N Dog Images:  2  N NotDog Images:  2 N Breeds:  0
+Pct Corr dog: 100.0 Pct Corr NOTdog: 100.0  Pct Corr Breed:   0.0
+
+ ** Check Statistics - calculated from this function as a check:
+N Images:  4  N Dog Images:  2  N NotDog Images:  2 N Breeds:  0
+Pct Corr dog: 100.0 Pct Corr NOTdog: 100.0  Pct Corr Breed:   0.0
+====================================================================================================
+
+Used CNN model:  RESNET 
+
+Number of images    :   4
+Number of dogs      :   2
+Number of Not-a dog :   2
+
+
+Pct Match           :  25.0
+Pct Correct Breed   :   0.0
+Pct Correct Dogs    : 100.0
+Pct Correct Notdogs : 100.0
+
+
+
+ Incorrect Breeds:
+Pet labels:                            dog Classification labels: cocker spaniel, english cocker spaniel, cocker
+Pet labels:                            dog Classification labels:               blenheim spaniel
+
+** Total Elapsed Runtime: 0:0:0

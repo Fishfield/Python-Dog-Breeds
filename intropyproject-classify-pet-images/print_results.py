@@ -62,5 +62,45 @@ def print_results(results_dic, results_stats_dic, model,
     Returns:
            None - simply printing results.
     """    
+
+    print("="*100)
+
+    print("\nUsed CNN model: ", model.upper(), "\n")
+
+    print_numbers("Number of images", results_stats_dic['n_images'])
+    print_numbers("Number of dogs", results_stats_dic['n_dogs_img'])
+    print_numbers("Number of Not-a dog", results_stats_dic['n_notdogs_img'])
+
+    print("\n")
+
+    for key in results_stats_dic:
+        if (key.startswith('pct')):
+            print_percentages(key.replace('_', ' ').title(), results_stats_dic[key])
+
+    print("\n")
+
+    if print_incorrect_dogs and are_any_dogs_misclassified(results_stats_dic):
+        for key in results_dic:
+            if sum(results_dic[key][3:]) == 1:
+                print_misclassification(key, results_dic)
+
+    print("\n Incorrect Breeds:")
+
+    if print_incorrect_breed and results_stats_dic['n_correct_dogs'] != results_stats_dic['n_correct_breed']:
+        for key in results_dic:
+            if sum(results_dic[key][3:]) == 2 and results_dic[key][2] == 0:
+                print_misclassification(key, results_dic)
+   
     None
-                
+
+def print_numbers(text, number):
+    print("{:20}: {:3d}".format(text, number))
+
+def print_percentages(text, percentage):
+    print("{:20}: {:5.1f}".format(text, percentage))
+
+def print_misclassification(key, results_dic):
+    print("Pet labels: {:>30} Classification labels: {:>30}".format(results_dic[key][0], results_dic[key][1]))
+
+def are_any_dogs_misclassified(results_stats_dic):
+    return (results_stats_dic['n_correct_dogs'] + results_stats_dic['n_correct_notdogs']) != results_stats_dic['n_images']

@@ -67,4 +67,35 @@ def adjust_results4_isadog(results_dic, dogfile):
     Returns:
            None - results_dic is mutable data type so no return needed.
     """           
+
+    dog_dic = dict()
+
+    with open(dogfile, 'r') as file:
+        line = file.readline()
+
+        while(line != ""):
+            dog = line.rstrip('\n')
+            if dog not in dog_dic:
+                dog_dic[dog] = 1
+            else:
+                print("Dog already exists in dict")
+            
+            line = file.readline()
+
+    for key in results_dic:        
+        if results_dic[key][0] in dog_dic:  
+            if results_dic[key][1] in dog_dic:
+                results_dic[key].extend([1,1])
+            else:
+                print("not correctly classified in else 1: " + str(results_dic[key][0]) + " "+ str(results_dic[key][1]))
+                results_dic[key].extend([1,0])
+        else:
+            if results_dic[key][1] in dog_dic:
+                results_dic[key].extend([0,1])
+            else:
+                print("not correctly classified in else 1: " + str(results_dic[key][0]) + " "+ str(results_dic[key][1]))
+
+                results_dic[key].extend([0,0])
+
+    print(results_dic)
     None
