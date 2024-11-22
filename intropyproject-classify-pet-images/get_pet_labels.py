@@ -48,7 +48,7 @@ def get_pet_labels(image_dir):
     pet_labels = dict()
 
     for filename in filename_list:
-        # We assume that the format is xxx_234234.jpg
+        # We assume that the format is xxx_234234.jpg. We find the last index of SPACE and cut the right part
         adjusted_filename = filename.lower().replace("_"," ").strip()
         pet_labels[filename] = [adjusted_filename[0:adjusted_filename.rindex(" ")]]
         
