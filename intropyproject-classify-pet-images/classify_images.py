@@ -68,6 +68,8 @@ def classify_images(images_dir, results_dic, model):
 
     
     for file_name in results_dic:
+      if images_dir[len(images_dir)-1] != '/':
+         images_dir += '/'
       image_classification = classifier(images_dir + file_name , model).lower().strip()
 
       does_match = results_dic[file_name][0] in image_classification
